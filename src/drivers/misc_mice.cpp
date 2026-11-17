@@ -2,7 +2,7 @@
 //  * Motospeed X6 (Realtek VID 0BDA, receivers FFE0 / FFF2, interface 4): output report B5 [06],
 //    reply report B4, byte 20 = level (+128 while charging). The cable (FFF1) reports no battery.
 //    From github.com/Jacobz888/LGSTrayBattery-MotospeedX6.
-//  * Xenta receivers (Delux M900 Pro, Attack Shark X6 / R1 / X11 / X3 Max / V3 Pro; VID 1D57): the receiver
+//  * Xenta receivers (Delux M900 Pro, Attack Shark X6 / R1 / X11 / X3 Max / V3 Pro, Lingbao M5 Pro; VID 1D57): the receiver
 //    broadcasts input report 03 on usage page 000A every ~2 s: [03][model][40][state][percent],
 //    state 2 = full, 3 = charging (percent frozen). From github.com/AeonArcHQ/omarchy-delux-m900.
 //    The collection is push-only (no output or feature report), so it is opened read-only, as BatteryTray
@@ -118,6 +118,7 @@ const XentaModel kXentaModels[] = {
     { 0x4E, L"Attack Shark X3 Max", false },
     { 0xE5, L"Attack Shark V3 Pro", false },
     { 0x10, L"Attack Shark X6 / R1", true },  // level reported in tens (0-10)
+    { 0x45, L"Lingbao M5 Pro", false },  // receiver 1D57:FA60, frame 03 45 40 01 <percent>
 };
 
 struct XentaListener {
